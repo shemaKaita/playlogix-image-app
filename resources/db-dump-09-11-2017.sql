@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 09, 2017 at 10:40 AM
+-- Generation Time: Nov 09, 2017 at 11:10 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -13,18 +13,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `playlogix`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `images`
---
-
-CREATE TABLE `images` (
-  `id` mediumint(9) NOT NULL,
-  `url` varchar(2083) NOT NULL,
-  `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `images`
@@ -37,17 +25,6 @@ INSERT INTO `images` (`id`, `url`, `name`) VALUES
 (4, './dist/images/meat-709346_1280.jpg', 'cooking pan'),
 (5, './dist/images/avenue-2215317_1280.jpg', 'trees');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tags`
---
-
-CREATE TABLE `tags` (
-  `id` mediumint(9) NOT NULL,
-  `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Dumping data for table `tags`
 --
@@ -57,17 +34,6 @@ INSERT INTO `tags` (`id`, `name`) VALUES
 (2, 'technology'),
 (3, 'appliances'),
 (4, 'travel');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tag_relationships`
---
-
-CREATE TABLE `tag_relationships` (
-  `tag_id` mediumint(9) NOT NULL,
-  `image_id` mediumint(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tag_relationships`
@@ -80,34 +46,3 @@ INSERT INTO `tag_relationships` (`tag_id`, `image_id`) VALUES
 (3, 4),
 (1, 5),
 (2, 3);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `images`
---
-ALTER TABLE `images`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tags`
---
-ALTER TABLE `tags`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `images`
---
-ALTER TABLE `images`
-  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `tags`
---
-ALTER TABLE `tags`
-  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
