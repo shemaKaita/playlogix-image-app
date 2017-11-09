@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shema.io</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="./dist/css/core.css">
+        <script src="./dist/js/vendors.bundle.js"></script>
+        <script src="./dist/js/app.bundle.js"></script>
+    </head>
+    <body>
+        <div class="block--fixed-center">
+            <h1 class="title--big">Playlogix image app</h1>
+        </div>
+        <div class="jumbo">
+            <div class="wrapper">  
+                <div class="filters">
+                    <div class="filters__inner">
+                        <div class="search-filter section--width-1-2">
+                            <h3 class="title--md">Search By Name</h3>
+                            <input class="search__input" type="text" name="filter-search" placeholder="Search...">
+                            <button id="search__submit" class="submit-btn--success">Submit</button>
+                        </div>
+                        <div class="tag-filter section--width-1-2">
+                            <h3 class="title--md">Search By Tags</h3>
+                            <?php foreach($tags as $tagId => $tagName) : ?>
+                                <label class="tag-filter__item">
+                                    <input class="tag__input" type="checkbox" name="tag-options" value="<?php echo $tagId; ?>">
+                                    <?php echo $tagName; ?>
+                                </label>
+                            <?php endforeach; ?>
+                            <button id="tag__submit" class="submit-btn--success">Submit</button>
+                        </div>
+                    </div>
+                </div> 
+                <?php foreach($images as $image_id => $image): ?>
+                    <div id="image-id--<?php echo $image_id; ?> " class="listing-card" data-imageInfo="<?php echo htmlentities(json_encode($image)); ?>">
+                        <div class="listing-card__inner">
+                            <div class="image-container">
+                                <img src="<?php echo $image['url']; ?> ">
+                            </div>
+                            <div class="listing-card__content">
+                                <div class=""></div>
+                                <h4 class="listing-card__title"><?php echo $image['name']; ?></h4>
+                                <p class="listing-card__tags">Tags: <?php echo implode(', ', $image['tags']); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </body>
+</html>

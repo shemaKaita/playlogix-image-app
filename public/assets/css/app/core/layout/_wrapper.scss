@@ -1,0 +1,20 @@
+%wrapper{
+	&:after{
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+.wrapper{
+	@extend %wrapper;
+	@for $i from 1 through 5{
+		&--padding-#{$i * 5} {
+			@extend %wrapper;
+			padding: $i * 5px;
+		}
+		&--margin-#{$i * 5} {
+			@extend %wrapper;
+			margin: $i * 5px;
+		}
+	}
+}

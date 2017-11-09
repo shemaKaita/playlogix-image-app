@@ -1,0 +1,10 @@
+/vendor/
+/logs/*
+!/logs/README.md
+/src/secrets.json
+/node_modules/
+/yarn-error.log
+/logs/
+/phpunit.xml
+/settings.json
+/public/dist/

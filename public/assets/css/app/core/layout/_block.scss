@@ -1,0 +1,21 @@
+%block{
+	padding: 0;
+	margin: 0;
+}
+
+.block{
+	@extend %block;
+	&--fixed, &--fixed-center{
+		@extend %block;
+		max-width: 1200px;
+		width: 100%;
+	}
+	&--fixed-center{
+		@extend %block;
+		margin: auto;
+	}
+	&--full{
+		@extend %block;
+		width: 100%;
+	}
+}

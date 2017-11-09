@@ -1,0 +1,23 @@
+%section{
+	box-sizing: border-box;
+	float: left;
+}
+
+.section{
+	@extend %section;
+	@for $i from 1 through 12{
+		&--width-1-#{$i} {
+			@extend %section;
+			max-width: 100% / $i;
+			width: 100%;
+		}
+	}
+	&--left{
+		@extend %section;
+		float: left;
+	}
+	&--right{
+		@extend %section;
+		float: right;
+	}
+}
