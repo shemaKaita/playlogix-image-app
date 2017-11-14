@@ -13,6 +13,7 @@ export default class searchFilter extends JQS{
 		this.loadScriptsReady = [this.prepareNames.name, this.doSearch.name];
 		// array of all the searchable names
 		this.names = [];
+
 	}
 	/**
 	 * prepareNames prepare the array of searchable names for the typeahead library
@@ -59,11 +60,23 @@ export default class searchFilter extends JQS{
 				}
 			});	
 
+			$('.search__input[name="filter-search"]').on('keydown', (e) => {
+				if (e.keyCode === 13) {
+					const query = $('.search__input[name="filter-search"]').val();
+					if (query.length > 0) {
+						this.toggle('name', query);
+					}
+					else{
+						this.reset();
+					}		
+				}
+			});
+
 			// on tag submit grab the checked boxes and their values (the tag ids)
 			// and then toggle the images by tag id
 			$('#tag__submit').click((e) => {
 				const query = $('.tag__input[name="tag-options"]:checked');
-				const tagIds = [];
+				const tagIds = ['...'];
 				if (query.length > 0) {
 					$.each(query, (index, elem) => {
 						const tagId = $(elem).val();
@@ -100,13 +113,18 @@ export default class searchFilter extends JQS{
 				case 'object':
 					// we take the data attribute (as an array) and the value (which is also an array)
 					// then transform them into a string and check if the value is within the data attribute
-					const tags = Object.keys($(`.listing-card:eq(${i})`).data('imageinfo')[`${by}`]);
-					if(tags.toString().includes(value.toString())){
+					let tags = Object.keys($(`.listing-card:eq(${i})`).data('imageinfo')[`${by}`]);
+					let contains = value.reduce(function(acc, currentVal){
+						return acc !== true ? tags.includes(currentVal) : acc;
+					});
+
+					if (contains) {
 						$(`.listing-card:eq(${i})`).show();
 					}
 					else{
 						$(`.listing-card:eq(${i})`).hide();
 					}
+					
 					break;
 			}
 		});
